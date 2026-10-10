@@ -208,7 +208,7 @@ TAIL = """
 """
 
 XMAS_BAR = ("Christmas hot orders close noon Mon, Dec 21", "")
-XMAS_SMALL = "Hot delivery Dec 22 to 24 &nbsp;&middot;&nbsp; Cold pickup Christmas Eve until 5pm &nbsp;&middot;&nbsp; Every dish labeled with allergens"
+XMAS_SMALL = "Hot delivery Dec 22 to 24 &nbsp;&middot;&nbsp; Cold pickup Christmas Eve &nbsp;&middot;&nbsp; Every dish labeled with allergens"
 PKGS = ["ham_dinner", "rib_dinner", "full_table"]
 HC, CC = "holiday-2026", "holiday-2026-corp"
 emails = []
@@ -282,7 +282,8 @@ e.timeline([
     ("Now", "Pick your dinner", "A package for ten, or build your own from the menu.", False),
     ("Mon, Dec 21", "Hot orders close", "At noon. That&rsquo;s the last call for hot delivery.", True),
     ("Dec 22 to 24", "Hot delivery", "Delivered hot and ready to serve.", False),
-    ("Christmas Eve", "Cold pickup", "Missed the cutoff? Pick it up cold, until 5pm, with a reheating guide.", False),
+    ("Wed, Dec 23", "Last day for cold orders", "Missed the hot cutoff? Order cold by Wednesday.", False),
+    ("Christmas Eve", "Cold pickup", "Pick it up until 5pm, with a reheating guide.", False),
     ("Christmas Day", "We&rsquo;re closed online", "Need something special? Call us at 323.963.3475.", False),
 ])
 e.packages(PKGS, "Each feeds ten. Add or swap anything after.")
@@ -291,25 +292,25 @@ e.closing("Hot orders close noon Mon, Dec 21", "Get on the list.", "Order Christ
 e = mk("h07-last-call")
 e.bar("Hot orders close noon Mon, Dec 21", "Last call")
 e.intro("Last call", "The oven&rsquo;s<br>almost full.",
-        "Hot Christmas orders close <strong>Monday, December 21 at noon</strong>. After that it&rsquo;s cold pickup on Christmas Eve, with reheating instructions.",
+        "Hot Christmas orders close <strong>Monday, December 21 at noon</strong>. After that it&rsquo;s cold only: order by Wednesday, Dec 23 and pick it up Christmas Eve, with reheating instructions.",
         "Get on the list", size=78)
 e.strip(["primerib", "ham", "mash", "pecan"])
 e.packages(PKGS, "Each feeds ten. Hot delivery Dec 22 to 24.")
 e.closing("Hot orders close noon Mon, Dec 21", "Last chance for hot.", "Order before it closes", XMAS_SMALL)
 
 e = mk("h08-cold-pickup")
-e.bar("Cold pickup Christmas Eve until 5pm", "Still time")
+e.bar("Order cold by Wed, Dec 23", "Christmas Eve pickup")
 e.intro("Cold pickup &middot; Christmas Eve", "Still time.<br>Pick it up cold.",
-        "Hot orders are closed, but the whole holiday menu is still available cold, with reheating instructions written for your order. Pick it up on Christmas Eve, until 5pm.",
+        "Hot orders are closed, but the whole holiday menu is still available cold, with reheating instructions written for your order. Order by Wednesday, Dec 23 and pick it up on Christmas Eve, until 5pm.",
         "Order for pickup")
 e.strip(["ham", "primerib", "brussels", "apple"])
 e.timeline([
-    ("Today", "Order online", "Any package or dish, same menu.", False),
-    ("Christmas Eve", "Pick it up cold", "Any time until 5pm.", True),
+    ("Wed, Dec 23", "Last day to order", "Any package or dish, same menu.", True),
+    ("Christmas Eve", "Pick it up cold", "Any time until 5pm.", False),
     ("Christmas Day", "Reheat and serve", "Follow the guide. Take the credit.", False),
 ])
 e.packages(PKGS, "Each feeds ten. Cold, with reheating instructions.")
-e.closing("Pickup Christmas Eve until 5pm", "Christmas, still handled.", "Order for pickup",
+e.closing("Order by Wed, Dec 23 &middot; Pickup Christmas Eve", "Christmas, still handled.", "Order for pickup",
           "Cold pickup Christmas Eve &nbsp;&middot;&nbsp; Reheating guide included &nbsp;&middot;&nbsp; Every dish labeled with allergens")
 
 e = mk("h09-new-years-eve")
@@ -386,7 +387,7 @@ e.closing(CLOSE_EB, "Last lunch of the year.", "Book the lunch", CSMALL)
 e = mk("c06-hosting-at-home", True)
 e.bar(*XMAS_BAR)
 e.intro("For your own table", "Hosting at<br>home too?",
-        "You fed the team. Now let us cook for your family. Hot delivery Dec 22 to 24, or pick it up cold on Christmas Eve, until 5pm.",
+        "You fed the team. Now let us cook for your family. Hot delivery Dec 22 to 24, or order cold by Dec 23 and pick it up Christmas Eve.",
         "Order Christmas dinner")
 e.hero("ribdinner", "The Prime Rib Dinner for 10", "rib_dinner")
 e.packages(PKGS, "Each feeds ten. Add or swap anything after.")

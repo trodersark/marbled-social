@@ -6,7 +6,7 @@ Generator: `python3 holiday/build.py OUTDIR IMGBASE` writes 15 emails plus `_ima
 ## Rules from Tro
 - No holiday emails before Mon 11/30 (Monday after Thanksgiving).
 - Christmas: hot orders close noon Mon 12/21. Hot delivery Dec 22 to 24.
-- After the cutoff, cold pickup only on Christmas Eve, through 5pm.
+- After the hot cutoff, cold only: last day to order is Wed 12/23 (the day before pickup). Pickup Christmas Eve, through 5pm.
 - Christmas Day: closed online, special requests case by case. Never offer it as an ordering option.
 - Hanukkah (first night Fri 12/4) and New Year's Eve (Thu 12/31): 48 hours' notice, hot or cold.
 - Corporate track sells office holiday parties, 48 hours' notice.
@@ -43,7 +43,6 @@ Generator: `python3 holiday/build.py OUTDIR IMGBASE` writes 15 emails plus `_ima
   On a normal computer: download them, center-crop with `_images.json` (hero 1200x720, tile 520x372, sq 300x300, JPEG ~q76),
   commit to `email/holiday/` in this repo, and point IMGBASE at the jsDelivr URL pinned to that commit.
 - One test file (holiday26-spinach-tile.jpg) may be in Mailchimp Content Studio; it can be deleted.
-- Open question for Tro: for cold Christmas Eve pickup, is there an order cutoff time, or can people order until the 5pm pickup?
 
 ## Files
 - `holiday/photos.json`: image key to store photo URL.
@@ -62,7 +61,8 @@ Generator: `python3 holiday/build.py OUTDIR IMGBASE` writes 15 emails plus `_ima
 | h06 | How Christmas works this year | Hot delivery Dec 22 to 24. Order by noon Mon, Dec 21. |
 | h07 | Hot orders close tomorrow at noon | After that it's cold pickup on Christmas Eve. |
 | h07 resend | Hot orders close at noon today | Last call for hot Christmas delivery. |
-| h08 | Missed it? Pick it up cold. | The whole menu, with reheating instructions. Pickup Christmas Eve until 5pm. |
+| h08 | Missed it? Pick it up cold. | Order by Wed, Dec 23. Pick up Christmas Eve, with reheating instructions. |
+| h08 resend | Last day to order for Christmas Eve | Cold orders close tomorrow, Wed, Dec 23. |
 | h09 | New Year's Eve, at home | Charcuterie, steak and short ribs. Order by Tue, Dec 29. |
 | h02 resend | Last day to order for the first night | Hanukkah starts Friday. Order today. |
 | c01 | The office holiday party, handled | Spreads for 10, from $345. Delivered hot, on time, ready to serve. |
