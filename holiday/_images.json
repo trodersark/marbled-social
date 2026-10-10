@@ -1,0 +1,97 @@
+{
+"apple": [
+"sq",
+"tile"
+],
+"brownies20": [
+"tile"
+],
+"brussels": [
+"sq",
+"tile"
+],
+"carrots": [
+"tile"
+],
+"cauli": [
+"tile"
+],
+"chafing": [
+"tile"
+],
+"charcuterie": [
+"hero",
+"tile"
+],
+"cheesecake": [
+"tile"
+],
+"citrus": [
+"tile"
+],
+"cookies": [
+"tile"
+],
+"crudite": [
+"tile"
+],
+"fulltable": [
+"hero"
+],
+"gingerbread": [
+"hero",
+"tile"
+],
+"ham": [
+"sq",
+"tile"
+],
+"latkes": [
+"hero",
+"tile"
+],
+"mac": [
+"tile"
+],
+"marketveg": [
+"tile"
+],
+"mash": [
+"sq",
+"tile"
+],
+"pecan": [
+"sq",
+"tile"
+],
+"peppermint": [
+"hero",
+"tile"
+],
+"plates": [
+"tile"
+],
+"primerib": [
+"sq",
+"tile"
+],
+"ribdinner": [
+"hero"
+],
+"salmon": [
+"tile"
+],
+"shortribs": [
+"tile"
+],
+"skirt": [
+"hero",
+"tile"
+],
+"spinach": [
+"tile"
+],
+"tritip": [
+"tile"
+]
+}

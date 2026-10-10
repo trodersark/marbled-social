@@ -44,3 +44,9 @@ Generator: `python3 holiday/build.py OUTDIR IMGBASE` writes 15 emails plus `_ima
   commit to `email/holiday/` in this repo, and point IMGBASE at the jsDelivr URL pinned to that commit.
 - One test file (holiday26-spinach-tile.jpg) may be in Mailchimp Content Studio; it can be deleted.
 - Open question for Tro: for cold Christmas Eve pickup, is there an order cutoff time, or can people order until the 5pm pickup?
+
+## Files
+- `holiday/photos.json`: image key to store photo URL.
+- `holiday/_images.json`: crops each image key needs. Name files `<key>-<crop>.jpg` (crop = hero, tile or sq).
+- build.py also expects `logo.png` under IMGBASE (copy `email/logo-2749a8c85b.png` to `email/holiday/logo.png`).
+- Send dates were updated after Tro's last note: Home starts Mon 11/30 (not Sun 11/29).
