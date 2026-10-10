@@ -14,7 +14,7 @@ Generator: `python3 holiday/build.py OUTDIR IMGBASE` writes 15 emails plus `_ima
 - Nothing gets scheduled until Tro approves the test emails.
 - Copy style: direct, plain, no em-dashes.
 
-## Home (Casual tag), utm_campaign=holiday-2026
+## Home (segment "Casual (personal email)"), utm_campaign=holiday-2026
 | # | Send | Email | Resend |
 |---|---|---|---|
 | h01 | Mon 11/30 10am | The holiday menu is open | Thu 12/3 10am |
@@ -27,7 +27,7 @@ Generator: `python3 holiday/build.py OUTDIR IMGBASE` writes 15 emails plus `_ima
 | h08 | Mon 12/21 2pm | Cold pickup Christmas Eve until 5pm | Tue 12/22 2pm |
 | h09 | Sun 12/27 9am | New Year's Eve, order by Tue 12/29 | Mon 12/28 9am |
 
-## Corporate (Corporate tag), utm_campaign=holiday-2026-corp, all 9am
+## Corporate (segment "Corporate (work email)"), utm_campaign=holiday-2026-corp, all 9am
 | # | Send | Email | Resend |
 |---|---|---|---|
 | c01 | Mon 11/30 | The office holiday party, handled | Tue 12/1 |
