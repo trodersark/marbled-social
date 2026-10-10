@@ -98,10 +98,10 @@ class Email:
             rows += f'''<tr><td style="padding:14px 0;border-bottom:1px solid {LINE};">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
 <td valign="middle" style="font-family:{COND};font-size:24px;font-weight:800;text-transform:uppercase;color:{INK};">{name}<br><span style="font-size:15px;color:{G};letter-spacing:1px;">${price} &middot; {save.upper()}</span></td>
-<td valign="middle" align="right" width="150" style="width:150px;"><a href="{self.url('add-' + k, k)}" target="_blank" style="display:inline-block;background:{bg};color:#FFFFFF;font-family:{COND};font-size:15px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;padding:13px 16px;">Add to cart</a></td></tr></table></td></tr>'''
+<td valign="middle" align="right" width="150" style="width:150px;"><a href="{self.url('add-' + k, k)}" target="_blank" style="display:inline-block;background:{bg};color:#FFFFFF;font-family:{COND};font-size:15px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;padding:13px 16px;white-space:nowrap;">Add to cart</a></td></tr></table></td></tr>'''
         self.parts.append(f'''<tr><td bgcolor="#FFFFFF" style="padding:22px 44px 38px;background:#FFFFFF;" class="pad" mc:edit="packages"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">{rows}</table><p style="margin:14px 0 0;font-family:{BODY};font-size:15px;line-height:1.55;color:{MUTE};text-align:center;">{note}</p></td></tr>''')
 
-    def tiles(self, keys, bg="#F6F5F1", txt_h=78):
+    def tiles(self, keys, bg="#F6F5F1", txt_h=112):
         """2-up product tiles. Equal column widths and fixed text height so buttons line up."""
         cells = []
         for k in keys:
@@ -121,11 +121,11 @@ class Email:
     def bundle(self, eyebrow, title, keys, note, bg="#F6F5F1"):
         total = sum(P[k][2] for k in keys)
         names = " + ".join(P[k][1] for k in keys)
-        self.parts.append(f'''<tr><td bgcolor="{bg}" style="padding:4px 40px 40px;background:{bg};" class="pad"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:2px solid {INK};background:#FFFFFF;"><tr><td style="padding:26px 26px 28px;" bgcolor="#FFFFFF"><p style="margin:0;font-family:{COND};font-size:14px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:{G};text-align:center;">{eyebrow}</p><p style="margin:8px 0 0;font-family:{COND};font-size:32px;line-height:1;font-weight:800;text-transform:uppercase;color:{INK};text-align:center;">{title} <span style="color:{G};">${total}</span></p><p style="margin:10px 0 18px;font-family:{BODY};font-size:15px;line-height:1.5;color:{MUTE};text-align:center;">{names}. {note}</p>{self.button('+ Add all to cart', self.url('add-bundle', keys), G, big=False)}</td></tr></table></td></tr>''')
+        self.parts.append(f'''<tr><td bgcolor="{bg}" style="padding:4px 40px 40px;background:{bg};" class="pad"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:2px solid {INK};background:#FFFFFF;"><tr><td class="bpad" style="padding:26px 26px 28px;" bgcolor="#FFFFFF"><p style="margin:0;font-family:{COND};font-size:14px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:{G};text-align:center;">{eyebrow}</p><p class="bt" style="margin:8px 0 0;font-family:{COND};font-size:32px;line-height:1;font-weight:800;text-transform:uppercase;color:{INK};text-align:center;">{title} <span style="color:{G};">${total}</span></p><p style="margin:10px 0 18px;font-family:{BODY};font-size:15px;line-height:1.5;color:{MUTE};text-align:center;">{names}. {note}</p>{self.button('+ Add all to cart', self.url('add-bundle', keys), G, big=False)}</td></tr></table></td></tr>''')
 
     def strip(self, keys):
-        cells = "".join(f'''<td width="150" style="width:150px;"><a href="{self.url('img-' + k, k)}" target="_blank" style="text-decoration:none;"><img src="{IMG}{P[k][4]}-sq.jpg" width="150" height="150" alt="{P[k][1]}" style="display:block;width:100%;max-width:150px;height:auto;border:0;outline:none;" class="fluid"></a></td>''' for k in keys)
-        self.parts.append(f'<tr><td style="padding:0;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="table-layout:fixed;"><tr>{cells}</tr></table></td></tr>')
+        cells = "".join(f'''<td width="25%" style="width:25%;"><a href="{self.url('img-' + k, k)}" target="_blank" style="text-decoration:none;"><img src="{IMG}{P[k][4]}-sq.jpg" width="150" height="150" alt="{P[k][1]}" style="display:block;width:100%;max-width:150px;height:auto;border:0;outline:none;" class="fluid"></a></td>''' for k in keys)
+        self.parts.append(f'<tr><td style="padding:0;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>{cells}</tr></table></td></tr>')
 
     def contents(self, title, items):
         half = (len(items) + 1) // 2
@@ -185,6 +185,8 @@ HEAD = """<!doctype html>
     .btn { width:100% !important; }
     .tile { padding-bottom:26px !important; }
     .tile-txt { height:auto !important; }
+    .bt { font-size:26px !important; }
+    .bpad { padding:22px 16px 22px !important; }
     .bar { font-size:11px !important; letter-spacing:1px !important; }
     .btn a { padding-left:14px !important; padding-right:14px !important; font-size:18px !important; }
   }
@@ -205,7 +207,7 @@ TAIL = """
 </html>
 """
 
-XMAS_BAR = ("Christmas hot orders close noon Mon, Dec 21", "Hot delivery Dec 22 to 24")
+XMAS_BAR = ("Christmas hot orders close noon Mon, Dec 21", "")
 XMAS_SMALL = "Hot delivery Dec 22 to 24 &nbsp;&middot;&nbsp; Cold pickup Christmas Eve until 5pm &nbsp;&middot;&nbsp; Every dish labeled with allergens"
 PKGS = ["ham_dinner", "rib_dinner", "full_table"]
 HC, CC = "holiday-2026", "holiday-2026-corp"
@@ -227,7 +229,7 @@ e.tiles(["shortribs", "latkes", "citrus", "peppermint"])
 e.closing("Christmas hot orders close noon Mon, Dec 21", "Book it before the calendar fills.", "Order holiday dinner", XMAS_SMALL)
 
 e = mk("h02-hanukkah")
-e.bar("Order by Wed, Dec 2 for the first night", "Hanukkah starts Fri, Dec 4")
+e.bar("Hanukkah orders by Wed, Dec 2", "First night Fri, Dec 4")
 e.intro("Hanukkah &middot; first night Fri, Dec 4", "Eight nights.<br>One less dinner.",
         "Crisp latkes with apple compote and chive sour cream. Short ribs braised in red wine until they fall apart. You light the candles, we cook. Order with 48 hours&rsquo; notice, hot or cold.",
         "Order for Hanukkah")
@@ -368,7 +370,7 @@ e.bundle("Sweets for 40", "The dessert table", ["gingerbread", "peppermint", "br
 e.closing(CLOSE_EB, "Sweeten the last meeting.", "Order dessert", CSMALL)
 
 e = mk("c05-before-the-break", True)
-e.bar("Christmas week orders close noon Mon, Dec 21", "Before the break")
+e.bar("Christmas week orders close noon Mon, Dec 21")
 e.intro("Before the break", "One more<br>team lunch.",
         "Send everyone off right. Book the last-day lunch with 48 hours&rsquo; notice. For Christmas week, orders close at noon Monday, Dec 21.",
         "Book the lunch")
