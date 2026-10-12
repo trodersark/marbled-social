@@ -157,7 +157,16 @@ class Email:
   <a href="mailto:info@marbled.la" style="color:#BDBDB6;text-decoration:none;">info@marbled.la</a> &nbsp;&middot;&nbsp; <a href="https://www.marbled.la" style="color:#BDBDB6;text-decoration:none;">marbled.la</a></p>
   <p style="margin:18px 0 0;font-family:{BODY};font-size:12px;line-height:1.6;color:#8A8A84;">You're getting this because {who} with Marbled LA or ordered from us. <a href="*|UPDATE_PROFILE|*" style="color:#8A8A84;">Update preferences</a> &middot; <a href="*|UNSUB|*" style="color:#8A8A84;">Unsubscribe</a><br>*|LIST:ADDRESSLINE|*</p>
 </td></tr>'''
-        return HEAD + "\n".join(self.parts) + footer + TAIL
+        body = "\n".join(self.parts) + footer
+        # Mailchimp needs every mc:edit name unique; a repeated name (two product
+        # grids in one email) makes both blocks show the same content.
+        seen = {}
+        def uniq(m):
+            seen[m.group(1)] = seen.get(m.group(1), 0) + 1
+            n = seen[m.group(1)]
+            return f'mc:edit="{m.group(1)}{n if n > 1 else ""}"'
+        body = __import__("re").sub(r'mc:edit="([^"]+)"', uniq, body)
+        return HEAD + body + TAIL
 
 HEAD = """<!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">

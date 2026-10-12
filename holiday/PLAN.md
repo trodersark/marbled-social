@@ -44,8 +44,11 @@ Generator: `python3 holiday/build.py OUTDIR IMGBASE` writes 15 emails plus `_ima
   All 40 image URLs return 200. Layout checked at 720px with the real photos: no missing images, tiles and buttons aligned.
 - Fixed: the cheesecake add-to-cart id had a typo; it now points at the live 9" cheesecake.
 - Every product id was checked against the live store on 10/10: all present, prices match, all on the Holiday menu.
-- Next: Mailchimp templates (Code your own, one per file in `templates/holiday/`), campaign tests to tro@marbled.la,
-  approval, then campaigns per the tables above. Nothing scheduled.
+- Mon 10/12: all 15 are Mailchimp templates ("Code your own", edit at /templates/design?tid=N), created by
+  `holiday/import_templates.py`: Home 01 to 09 = tids 10033280 to 10033288, Corp 01 to 06 = tids 10033289 to 10033294.
+  h04 had two blocks named "grid" (Mailchimp would show the first grid twice); build.py now numbers repeats (grid2),
+  and template 10033283 was updated. No other email changed.
+- Next: campaign drafts per the tables above, tests to tro@marbled.la, approval. Nothing scheduled.
 - One test file (holiday26-spinach-tile.jpg) may be in Mailchimp Content Studio; it can be deleted.
 
 ## Files
