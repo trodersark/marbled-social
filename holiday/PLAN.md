@@ -52,6 +52,7 @@ Generator: `python3 holiday/build.py OUTDIR IMGBASE` writes 15 emails plus `_ima
 - One test file (holiday26-spinach-tile.jpg) may be in Mailchimp Content Studio; it can be deleted.
 
 ## Files
+- `social/holiday-captions.txt`: Instagram/Facebook captions for the 9 Home emails (team brief PDF made 10/12, kept out of this public repo).
 - `holiday/photos.json`: image key to store photo URL.
 - `holiday/_images.json`: crops each image key needs. Name files `<key>-<crop>.jpg` (crop = hero, tile or sq).
 - build.py also expects `logo.png` under IMGBASE (copy `email/logo-2749a8c85b.png` to `email/holiday/logo.png`).
