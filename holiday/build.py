@@ -47,6 +47,23 @@ P = {
 
 def esc_id(k): return P[k][0]
 
+# Holiday colors (Tro, 2026-10-12): the emails are built in the brand greens and
+# recolored here, so December doesn't look like more Thanksgiving. Cranberry
+# accent, deeper evergreen band, gold label; Hanukkah gets midnight blue and
+# New Year's Eve black and gold. Logo, type, photos and black add buttons stay.
+BRAND = {"accent": G, "band": DG, "label": SAGE, "tilebg": "#F6F5F1"}
+PALETTES = {
+    "holiday": {"accent": "#9B2C3C", "band": "#1E3A2D", "label": "#D4B26A", "tilebg": "#F7F2EA"},
+    "h02-hanukkah": {"accent": "#2F5597", "band": "#1B2A4A", "label": "#C9D3E0", "tilebg": "#F2F4F8"},
+    "h09-new-years-eve": {"accent": "#8E6B1F", "band": "#161616", "label": "#D4B26A", "tilebg": "#F6F3EC"},
+}
+
+def recolor(html, pal):
+    import re
+    for role, old in BRAND.items():
+        html = re.sub(re.escape(old), pal[role], html, flags=re.I)
+    return html
+
 class Email:
     def __init__(self, code, campaign, corp=False):
         self.code, self.campaign, self.corp = code, campaign, corp
@@ -166,7 +183,7 @@ class Email:
             n = seen[m.group(1)]
             return f'mc:edit="{m.group(1)}{n if n > 1 else ""}"'
         body = __import__("re").sub(r'mc:edit="([^"]+)"', uniq, body)
-        return HEAD + body + TAIL
+        return recolor(HEAD + body + TAIL, PALETTES.get(self.code, PALETTES["holiday"]))
 
 HEAD = """<!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">

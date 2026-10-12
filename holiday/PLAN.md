@@ -51,6 +51,9 @@ Generator: `python3 holiday/build.py OUTDIR IMGBASE` writes 15 emails plus `_ima
 - Next: campaign drafts per the tables above, tests to tro@marbled.la, approval. Nothing scheduled.
 - One test file (holiday26-spinach-tile.jpg) may be in Mailchimp Content Studio; it can be deleted.
 
+## Colors (Tro, 10/12)
+Holiday colors so December doesn't look like Thanksgiving: cranberry #9B2C3C accent, evergreen #1E3A2D band, gold #D4B26A label, cream #F7F2EA tiles. Hanukkah (h02): midnight blue #2F5597 / #1B2A4A. New Year's Eve (h09): black #161616 and gold #8E6B1F. Applied in build.py (PALETTES) and the posts; all 15 Mailchimp templates updated.
+
 ## Files
 - `social/holiday-captions.txt`: Instagram/Facebook captions for the 9 Home emails (team brief PDF made 10/12, kept out of this public repo).
 - `holiday/photos.json`: image key to store photo URL.
