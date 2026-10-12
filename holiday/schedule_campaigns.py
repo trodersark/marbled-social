@@ -1,5 +1,8 @@
 """Schedule the TG26 / HOL26 Mailchimp drafts at the time in each title.
 
+Resends (" RESEND " in the title) are only scheduled once their original has
+been sent and the did-not-open audience has resolved; until then they WAIT.
+
     python3 holiday/schedule_campaigns.py                      # shows what it would schedule
     python3 holiday/schedule_campaigns.py --go                 # schedules every TG26/HOL26 draft
     python3 holiday/schedule_campaigns.py --go --only "TG26 Corp 01" --only "TG26 Home 01"
@@ -41,6 +44,24 @@ for c in camps:
     year = 2026 if int(m[1]) >= 10 else 2027
     rows.append((datetime(year, int(m[1]), int(m[2]), hr, tzinfo=LA), title, c))
 
+def resend_ready(c):
+    """A RESEND goes only to people who did not open an email that has ALREADY
+    gone out. Before the original is sent, Mailchimp can't resolve "did not
+    open" and counts the whole list (5,756 on 2026-10-12), so scheduling it then
+    would mail everyone. Refuse unless the original is sent and the resend's
+    audience is smaller than the original's."""
+    full = api("GET", f"/campaigns/{c['id']}?fields=recipients")["recipients"]
+    conds = (full.get("segment_opts") or {}).get("conditions") or []
+    aim = [x for x in conds if x.get("field") == "aim" and x.get("op") == "noopen"]
+    if len(conds) != 1 or not aim:
+        return False, "audience is not a single 'did not open' filter"
+    orig = api("GET", f"/campaigns/{aim[0]['value']}?fields=status,emails_sent,settings.title")
+    if orig.get("status") != "sent":
+        return False, f"original not sent yet ({orig.get('status')})"
+    if not full.get("recipient_count") or full["recipient_count"] >= (orig.get("emails_sent") or 0):
+        return False, f"audience {full.get('recipient_count')} is not smaller than the {orig.get('emails_sent')} who got the original"
+    return True, f"{full['recipient_count']} non-openers of {orig['emails_sent']}"
+
 now = datetime.now(LA)
 for when, title, c in sorted(rows, key=lambda r: r[0]):
     label = when.strftime("%a %m/%d %-I:%M %p PT")
@@ -48,6 +69,11 @@ for when, title, c in sorted(rows, key=lambda r: r[0]):
         print(f"  skip   {title}  ({c['status']})"); continue
     if when <= now:
         print(f"  PAST   {title}  ({label} has passed; not scheduled)"); continue
+    if " RESEND " in title:
+        ok, why = resend_ready(c)
+        if not ok:
+            print(f"  WAIT   {title}  ({why})"); continue
+        label += f", {why}"
     if not go:
         print(f"  would  {title}  -> {label}"); continue
     r = api("POST", f"/campaigns/{c['id']}/actions/schedule", {"schedule_time": when.astimezone(UTC).strftime("%Y-%m-%dT%H:%M:%S+00:00")})
