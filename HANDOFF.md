@@ -32,8 +32,9 @@ Rules:
 - Last day to order: noon Mon 11/23. After that, cold pickup only, with reheating instructions,
   pickup Wed 11/25 or Thu 11/26 morning, same online store.
 - Office orders: 48 hours' notice, order by noon Mon 11/23, delivery through Wed 11/25.
-- Open question for Tro: does "order by the day before pickup" apply to Thanksgiving cold pickup too?
-  (It does for Christmas.) If yes, add it to email 11 and its template.
+- Cold pickup lead time: ANSWERED 10/12. Tro will switch cold pickup orders placed after noon Mon 11/23 to next-day
+  (order by the day before), through Thanksgiving only, once he sees inventory. REMINDER: raise it with Tro on Mon 11/23.
+  Until then the store's default is 48 hours' notice.
 
 20 Mailchimp templates are built, QA'd and test-sent ("Code your own"; edit at /templates/design?tid=N):
 - Home: TG26 Home 01, 02, 03, 04, 05, 06, 07, 09, 10, 11 = tids 10033260 to 10033269 in that order.
