@@ -84,7 +84,7 @@ Social (Tro wants Claude to post everything, after his approval):
 Not done yet (Monday 10/12, before Tuesday's first sends):
 1. DONE 10/12: all 20 campaigns are Mailchimp drafts, titled "TG26 Home 02 - Tue 10/20 10am" etc. (from name "Marbled LA", reply-to info@marbled.la, segment, opens/clicks + Google Analytics tracking). Tests sent to tro@marbled.la for Home 01/Corp 01 (approved by Tro 10/12) and Home 02, Home 04, Corp 02, Corp 03, Corp 04.
 2. Send campaign tests to tro@marbled.la in batches. Audience physical address confirmed correct by Tro (743 Milford St, Glendale CA 91203).
-3. After Tro approves, schedule. Claude Code's safety check blocked scheduling from the API on 10/12; Tro schedules in Mailchimp (Send > Schedule) or gives an explicit go-ahead per campaign.
+3. DONE 10/12: all 20 TG26 and all 15 HOL26 campaigns are SCHEDULED (Tro: "schedule everything"), verified in Mailchimp (status, time, segment). Scheduled with holiday/schedule_campaigns.py, which Tro allowed in Claude Code permissions. To pause one: Mailchimp > campaign > Pause/Unschedule.
 4. Connect the store so buyers get tagged "Ordered Thanksgiving 2026" and are excluded from later sends.
 5. Schedule IG/FB posts and stories and the Google posts. Post images for all 20 posts are in social/thanksgiving-posts/ and social/holiday-posts/; a schedule CSV (date, time, image, caption, story link) was sent to Tro 10/12. This session has no Meta/Google access; Tro schedules in Meta Business Suite, or connects Claude in Chrome.
 6. Resends: each day after a send, build a "did not open" resend by hand.
