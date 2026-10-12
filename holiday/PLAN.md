@@ -23,14 +23,14 @@ Generator: `python3 holiday/build.py OUTDIR IMGBASE` writes 15 emails plus `_ima
 | h04 | Thu 12/10 10am | Build your own table | Fri 12/11 10am |
 | h05 | Sun 12/13 9am | Desserts | Mon 12/14 9am |
 | h06 | Thu 12/17 10am | How Christmas works | Fri 12/18 10am |
-| h07 | Sun 12/20 9am | Last call for hot | Mon 12/21 7am, subject "Hot orders close at noon today" |
+| h07 | Sun 12/20 9am | Last call for hot | Mon 12/21 7am, subject "Hot Christmas delivery closes at noon today" |
 | h08 | Mon 12/21 2pm | Cold pickup Christmas Eve until 5pm | Tue 12/22 2pm |
 | h09 | Sun 12/27 9am | New Year's Eve, order by Tue 12/29 | Mon 12/28 9am |
 
 ## Corporate (segment "Corporate (work email)"), utm_campaign=holiday-2026-corp, all 9am
 | # | Send | Email | Resend |
 |---|---|---|---|
-| c01 | Mon 11/30 | The office holiday party, handled | Tue 12/1 |
+| c01 | Mon 11/30 | Book the office holiday party | Tue 12/1 |
 | c02 | Thu 12/3 | Party menu for the team | Fri 12/4 |
 | c03 | Tue 12/8 | Set up in ten minutes | Wed 12/9 |
 | c04 | Thu 12/10 | Dessert for the team | Fri 12/11 |
@@ -60,22 +60,23 @@ Generator: `python3 holiday/build.py OUTDIR IMGBASE` writes 15 emails plus `_ima
 ## Subject lines and preview text
 | Email | Subject | Preview text |
 |---|---|---|
-| h01 | The holiday menu is open | Three dinners for ten, from $345. Add one in a tap. |
+| h01 | The holiday menu is open | Prime rib, ham and all the sides. Hot delivery Dec 22 to 24. |
 | h02 | Eight nights. One less dinner to cook. | Latkes and short ribs for the first night. Order by Wed, Dec 2. |
 | h03 | Prime rib, done properly | Slow roasted, horseradish cream, bordelaise. Dinner for 10, $620. |
 | h04 | Build your own holiday table | Pick an entree, add the sides. One tap each. |
-| h05 | Leave room for dessert | Gingerbread bars, peppermint brownies and pies from $44. |
+| h05 | Gingerbread, peppermint and pie | Gingerbread bars, peppermint brownies and pies from $44. |
 | h06 | How Christmas works this year | Hot delivery Dec 22 to 24. Order by noon Mon, Dec 21. |
 | h07 | Hot orders close tomorrow at noon | After that it's cold pickup on Christmas Eve. |
-| h07 resend | Hot orders close at noon today | Last call for hot Christmas delivery. |
-| h08 | Missed it? Pick it up cold. | Order by Wed, Dec 23. Pick up Christmas Eve, with reheating instructions. |
+| h07 resend | Hot Christmas delivery closes at noon today | Last call for hot Christmas delivery. |
+| h08 | Christmas Eve pickup is still open | Order by Wed, Dec 23. Pick up Christmas Eve, with reheating instructions. |
 | h08 resend | Last day to order for Christmas Eve | Cold orders close tomorrow, Wed, Dec 23. |
 | h09 | New Year's Eve, at home | Charcuterie, steak and short ribs. Order by Tue, Dec 29. |
 | h02 resend | Last day to order for the first night | Hanukkah starts Friday. Order today. |
-| c01 | The office holiday party, handled | Spreads for 10, from $345. Delivered hot, on time, ready to serve. |
+| c01 | Book the office holiday party | Prime rib, ham and sides for 10, from $345. 48 hours' notice. |
 | c02 | Feed the whole team | Steak, salmon, tri-tip and a real vegan option. |
 | c03 | Set up in ten minutes | Charcuterie, crudite, chafing dishes and plates. |
-| c04 | Dessert for the team | Peppermint brownies, gingerbread bars, cookies by the dozen. |
+| c04 | Something sweet for the team | Peppermint brownies, gingerbread bars, cookies by the dozen. |
 | c05 | One more team lunch before the break | Book with 48 hours' notice. Christmas week closes noon Mon, Dec 21. |
 | c06 | Hosting at home too? | Christmas dinner for 10, from $345. Hot orders close noon Mon, Dec 21. |
 Other resends reuse the original subject.
+Rule (Tro, 10/12): no holiday subject, preview or headline may repeat a Thanksgiving one. Check with `python3 holiday/check_unique.py`.

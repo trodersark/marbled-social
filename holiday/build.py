@@ -228,14 +228,14 @@ def mk(code, corp=False):
 # ---------------- HOME ----------------
 e = mk("h01-menu-open")
 e.bar(*XMAS_BAR)
-e.intro("Holiday 2026 &middot; serves 10", "Holiday dinner,<br>handled.",
+e.intro("Holiday 2026 &middot; serves 10", "Holiday dinner,<br>done for you.",
         "Prime rib, honey glazed ham, sides, salads and pies, cooked in our kitchen and ready for yours. Hot delivery Dec 22 to 24, or pick it up cold with a reheating guide.",
         "See the holiday menu")
 e.hero("fulltable", "The Full Table, holiday dinner for 10", "full_table")
 e.packages(PKGS, "Each feeds ten. Add or swap anything after.")
 e.heading("New this year", "Fresh on the menu", top=36, bg="#F6F5F1")
 e.tiles(["shortribs", "latkes", "citrus", "peppermint"])
-e.closing("Christmas hot orders close noon Mon, Dec 21", "Book it before the calendar fills.", "Order holiday dinner", XMAS_SMALL)
+e.closing("Christmas hot orders close noon Mon, Dec 21", "Claim your delivery day.", "Order holiday dinner", XMAS_SMALL)
 
 e = mk("h02-hanukkah")
 e.bar("Hanukkah orders by Wed, Dec 2", "First night Fri, Dec 4")
@@ -274,13 +274,13 @@ e.closing("Christmas hot orders close noon Mon, Dec 21", "Your table, your rules
 
 e = mk("h05-desserts")
 e.bar(*XMAS_BAR)
-e.intro("Holiday desserts", "Leave room<br>for dessert.",
+e.intro("Holiday desserts", "The dessert<br>table.",
         "Gingerbread with cream cheese frosting. Dark chocolate brownies with crushed candy cane. Handmade pies with a flaky butter crust.",
         "See desserts")
 e.hero("gingerbread", "Gingerbread bars with cream cheese frosting", "gingerbread")
 e.tiles(["gingerbread", "peppermint", "pecan", "cheesecake", "apple", "cookies"])
 e.bundle("The holiday pair", "Gingerbread + peppermint", ["gingerbread", "peppermint"], "Serves 20.")
-e.closing("Christmas hot orders close noon Mon, Dec 21", "Dessert is decided.", "Order dessert", XMAS_SMALL)
+e.closing("Christmas hot orders close noon Mon, Dec 21", "Make it a sweet one.", "Order dessert", XMAS_SMALL)
 
 e = mk("h06-how-christmas-works")
 e.bar(*XMAS_BAR)
@@ -299,8 +299,8 @@ e.packages(PKGS, "Each feeds ten. Add or swap anything after.")
 e.closing("Hot orders close noon Mon, Dec 21", "Get on the list.", "Order Christmas dinner", XMAS_SMALL)
 
 e = mk("h07-last-call")
-e.bar("Hot orders close noon Mon, Dec 21", "Last call")
-e.intro("Last call", "The oven&rsquo;s<br>almost full.",
+e.bar("Hot orders close noon Mon, Dec 21", "Christmas delivery")
+e.intro("Hot cutoff", "Hot orders<br>close Monday.",
         "Hot Christmas orders close <strong>Monday, December 21 at noon</strong>. After that it&rsquo;s cold only: order by Wednesday, Dec 23 and pick it up Christmas Eve, with reheating instructions.",
         "Get on the list", size=78)
 e.strip(["primerib", "ham", "mash", "pecan"])
@@ -319,7 +319,7 @@ e.timeline([
     ("Christmas Day", "Reheat and serve", "Follow the guide. Take the credit.", False),
 ])
 e.packages(PKGS, "Each feeds ten. Cold, with reheating instructions.")
-e.closing("Order by Wed, Dec 23 &middot; Pickup Christmas Eve", "Christmas, still handled.", "Order for pickup",
+e.closing("Order by Wed, Dec 23 &middot; Pickup Christmas Eve", "Christmas Eve, still covered.", "Order for pickup",
           "Cold pickup Christmas Eve &nbsp;&middot;&nbsp; Reheating guide included &nbsp;&middot;&nbsp; Every dish labeled with allergens")
 
 e = mk("h09-new-years-eve")
@@ -340,7 +340,7 @@ CLOSE_EB = "Christmas week orders close noon Mon, Dec 21"
 
 e = mk("c01-office-party", True)
 e.bar(*CBAR)
-e.intro("Office holiday party", "The office party,<br>handled.",
+e.intro("Office holiday party", "The office party,<br>done right.",
         "Prime rib, ham, sides, salads and dessert, delivered hot and on time, labeled for every diet. You book it. We bring it. Your team eats well.",
         "Plan the party")
 e.hero("fulltable", "The Full Table, holiday spread for 10", "full_table")
@@ -357,7 +357,7 @@ e.intro("The party menu", "Feed the<br>whole team.",
 e.hero("skirt", "Char grilled skirt steak with chimichurri", "skirt")
 e.tiles(["skirt", "salmon", "tritip", "cauli", "mac", "marketveg"])
 e.bundle("One tap", "Team lunch for 10", ["skirt", "marketveg", "farmsalad"], "Serves 10 to 12.")
-e.closing(CLOSE_EB, "Lunch, handled.", "Order for the office", CSMALL)
+e.closing(CLOSE_EB, "The team eats well.", "Order for the office", CSMALL)
 
 e = mk("c03-easy-setup", True)
 e.bar(*CBAR)
@@ -371,7 +371,7 @@ e.closing(CLOSE_EB, "Everything but the playlist.", "Order for the office", CSMA
 
 e = mk("c04-team-dessert", True)
 e.bar(*CBAR)
-e.intro("Holiday desserts", "Dessert for<br>the team.",
+e.intro("Holiday desserts", "Sweets for<br>the team.",
         "Peppermint brownies with crushed candy cane. Gingerbread bars with cream cheese frosting. Cookies and brownies by the tray. Easy to share, hard to stop.",
         "Order dessert")
 e.hero("peppermint", "Peppermint brownie bars", "peppermint")
